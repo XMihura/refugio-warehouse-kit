@@ -1,7 +1,7 @@
 # REFUGIO Madrid 2026 — Warehouse Challenge Local Kit
 
 This is the challenge engine and local evaluator from the REFUGIO Madrid 2026
-hackathon (July 4, 2026), released alongside the whitepaper *Speedrunning as a
+hackathon (June 27, 2026), released alongside the whitepaper *Speedrunning as a
 model of progress*. It lets anyone run the exact task that both the human
 teams and the autonomous agents competed on, and reproduce official scores on
 their own machine.
