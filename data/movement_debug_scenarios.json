@@ -1,0 +1,316 @@
+{
+  "layout_url": "/data/warehouse_layout.json",
+  "scenarios": [
+    {
+      "description": "Robot 0 starts next to its top base and moves deeper into the warehouse.",
+      "id": "valid_outer_corridor_move",
+      "robots": [
+        {
+          "blocked": false,
+          "carrying": false,
+          "final": [
+            3,
+            2
+          ],
+          "id": 0,
+          "intended": [
+            3,
+            2
+          ],
+          "movement": "down",
+          "reason": null,
+          "start": [
+            3,
+            1
+          ]
+        }
+      ],
+      "title": "Valid move in outer corridor"
+    },
+    {
+      "description": "Robot 0 tries to move upward into its base dock. Bases are outside the walkable floor.",
+      "id": "blocked_by_external_base",
+      "robots": [
+        {
+          "blocked": true,
+          "carrying": false,
+          "final": [
+            3,
+            1
+          ],
+          "id": 0,
+          "intended": [
+            3,
+            0
+          ],
+          "movement": "up",
+          "reason": "outside_walkable_area",
+          "start": [
+            3,
+            1
+          ]
+        }
+      ],
+      "title": "Blocked by external base"
+    },
+    {
+      "description": "Robot 12 tries to enter the first shelf block and remains in place.",
+      "id": "blocked_by_shelf",
+      "robots": [
+        {
+          "blocked": true,
+          "carrying": false,
+          "final": [
+            2,
+            3
+          ],
+          "id": 12,
+          "intended": [
+            3,
+            3
+          ],
+          "movement": "right",
+          "reason": "blocked_by_shelf",
+          "start": [
+            2,
+            3
+          ]
+        }
+      ],
+      "title": "Blocked by shelf"
+    },
+    {
+      "description": "WAIT keeps the robot in the same cell and is never statically blocked.",
+      "id": "wait_action",
+      "robots": [
+        {
+          "blocked": false,
+          "carrying": true,
+          "final": [
+            2,
+            50
+          ],
+          "id": 24,
+          "intended": [
+            2,
+            50
+          ],
+          "movement": "wait",
+          "reason": null,
+          "start": [
+            2,
+            50
+          ]
+        }
+      ],
+      "title": "Wait action"
+    },
+    {
+      "description": "A tiny fixture for visually checking multiple requested actions.",
+      "id": "small_batch",
+      "robots": [
+        {
+          "blocked": false,
+          "carrying": false,
+          "final": [
+            3,
+            2
+          ],
+          "id": 0,
+          "intended": [
+            3,
+            2
+          ],
+          "movement": "down",
+          "reason": null,
+          "start": [
+            3,
+            1
+          ]
+        },
+        {
+          "blocked": true,
+          "carrying": false,
+          "final": [
+            2,
+            3
+          ],
+          "id": 12,
+          "intended": [
+            3,
+            3
+          ],
+          "movement": "right",
+          "reason": "blocked_by_shelf",
+          "start": [
+            2,
+            3
+          ]
+        },
+        {
+          "blocked": false,
+          "carrying": false,
+          "final": [
+            49,
+            3
+          ],
+          "id": 72,
+          "intended": [
+            49,
+            3
+          ],
+          "movement": "left",
+          "reason": null,
+          "start": [
+            50,
+            3
+          ]
+        }
+      ],
+      "title": "Small batch of independent static moves"
+    },
+    {
+      "description": "Two robots request the same final cell; both moving robots are blocked.",
+      "id": "vertex_conflict",
+      "robots": [
+        {
+          "blocked": true,
+          "carrying": false,
+          "final": [
+            1,
+            1
+          ],
+          "id": 0,
+          "intended": [
+            2,
+            1
+          ],
+          "movement": "right",
+          "reason": "vertex_conflict",
+          "start": [
+            1,
+            1
+          ]
+        },
+        {
+          "blocked": true,
+          "carrying": false,
+          "final": [
+            3,
+            1
+          ],
+          "id": 1,
+          "intended": [
+            2,
+            1
+          ],
+          "movement": "left",
+          "reason": "vertex_conflict",
+          "start": [
+            3,
+            1
+          ]
+        }
+      ],
+      "title": "Vertex conflict"
+    },
+    {
+      "description": "Two robots try to exchange cells in one tick; both are blocked.",
+      "id": "edge_swap_conflict",
+      "robots": [
+        {
+          "blocked": true,
+          "carrying": false,
+          "final": [
+            1,
+            1
+          ],
+          "id": 0,
+          "intended": [
+            2,
+            1
+          ],
+          "movement": "right",
+          "reason": "edge_swap_conflict",
+          "start": [
+            1,
+            1
+          ]
+        },
+        {
+          "blocked": true,
+          "carrying": false,
+          "final": [
+            2,
+            1
+          ],
+          "id": 1,
+          "intended": [
+            1,
+            1
+          ],
+          "movement": "left",
+          "reason": "edge_swap_conflict",
+          "start": [
+            2,
+            1
+          ]
+        }
+      ],
+      "title": "Edge swap conflict"
+    },
+    {
+      "description": "A robot next to its target shelf cell can pick up without moving.",
+      "id": "pickup_adjacent_to_shelf",
+      "robots": [
+        {
+          "blocked": false,
+          "carrying": false,
+          "final": [
+            2,
+            3
+          ],
+          "id": 0,
+          "intended": [
+            2,
+            3
+          ],
+          "movement": "pickup",
+          "reason": null,
+          "start": [
+            2,
+            3
+          ]
+        }
+      ],
+      "title": "Pickup adjacent to shelf"
+    },
+    {
+      "description": "A carrying robot on its base-adjacent drop cell can drop without moving.",
+      "id": "drop_at_base",
+      "robots": [
+        {
+          "blocked": false,
+          "carrying": true,
+          "final": [
+            3,
+            1
+          ],
+          "id": 0,
+          "intended": [
+            3,
+            1
+          ],
+          "movement": "drop",
+          "reason": null,
+          "start": [
+            3,
+            1
+          ]
+        }
+      ],
+      "title": "Drop at base"
+    }
+  ],
+  "schema_version": 1
+}
